@@ -1,0 +1,38 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #131313;
+    padding: 0 20px;
+}
+
+.banner {
+    color: white;
+    flex: 20%;
+}
+
+.chat,
+.practice,
+.solve {
+    background-color: #1C1C1C;
+    color: #6A6A6A;
+    padding: 5px 20px;
+    border-radius: 5%;
+    margin: 10px 5px;
+}
+
+.active {
+    background-color: #6A6A6A !important;
+    color: #1C1C1C !important;
+}
+
+.grayCircle {
+    background-color: #6A6A6A;
+    color: #1C1C1C;
+    padding: 20px 20px;
+    border-radius: 100%;
+    margin: 10px 0;
+}
+
+.space {
+    flex: 100%;
+}
