@@ -11,7 +11,7 @@ export default function Component() {
     return (
         <div className={styles.uploadbackground}>
             <div className={styles.uploadbackgroundcentering}>
-                <div className={styles.title}><h1>paste study material to get started</h1></div>
+                <div className={styles.title}><h1>Paste study material to get started</h1></div>
                 <div className={styles.uploadbox}>
                     Prompt with lecture notes, study material, etc (instruction message with prompt ideas)....
                     <div className={styles.buttonContainer}>
