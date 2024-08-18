@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.uploadbackground {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    font-family: Oxygen;
+    font-weight: lighter;
+}
+
+.uploadbackgroundcentering {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1C1C1C;
+    width: 100%;
+}
+
+.title {
+    color: white;
+    font-size: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.uploadbox {
+    background-color: #313131;
+    color: #616161;
+    font-size: 30px;
+    width: 70%;
+    border-radius: 50px;
+    padding-top: 2%;
+    padding-left: 3%;
+    display: flex;
+    flex-direction: column;
+    font-size: 100%;
+    flex: 1;
+    margin-bottom: 50px;
+}
+
+.buttonContainer {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.uploadbutton {
+    background-color: #616161;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-style: none;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 50px;
+    font-size: 20px;
+
+}
+
+.image {
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+}

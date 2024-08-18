@@ -3,6 +3,13 @@ import wolframalpha
 import openai
 import re
 import os
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
+
+# Code of your application, which uses environment variables (e.g. from `os.environ` or
+# `os.getenv`) as if they came from the actual environment.
+
 
 
 client = wolframalpha.Client(os.getenv('WOLFRAM_APP_ID'))
@@ -67,6 +74,9 @@ def chatbot():
     while True:
         prompt = input("You: ")
         promptNew = prompt.lower()
+        
+        if promptNew == "exit":
+            break
 
         # Allows the user to override ChatGPT processing and process through Wolfram Alpha if a basic calculation is
         # entered or the user adds the word "wolfram" to their query
