@@ -95,6 +95,24 @@ def chatbot():
         print(f"Bot: {handle(promptNew)}")
 
 
+def GPTQuery0(myInput):
+    completion = openai.chat.completions.create(
+        model="gpt-4",
+        temperature=0.2,
+        max_tokens=256,
+        messages=[
+            {"role": "system", "content": "You are a study buddy helping to generate questions and answers for flashcards."},
+            {"role": "user", "content": myInput},
+        ]
+    )
+    return completion.choices[0].message.content
+
+def generate_flashcards(text):
+    prompt = f"Generate 3 questions and 3 answers from the following text for flashcards:\n\n{text}"
+    response = GPTQuery0(prompt)
+    flashcards = response.split('\n\n')
+    return flashcards
+
 
 if __name__ == "__main__":
     chatbot()
