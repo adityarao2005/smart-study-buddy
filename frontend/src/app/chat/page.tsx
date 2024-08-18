@@ -1,6 +1,7 @@
 import styles from "@/app/chat/page.module.css";
 import { Oxygen } from "next/font/google";
 import picture from "@/assets/send message button.png";
+import icon from "@/assets/icon.png";
 
 const oxygen = Oxygen({ subsets: ["latin"], display: "swap", weight: "400" });
 
@@ -17,7 +18,7 @@ function MessageView({ message }: { message: Message }) {
                 <div className={styles.text}>
                     {message.text}
                 </div>
-                <div className={styles.grayCircle}></div>
+                {message.sender != "me" && <div className={styles.grayCircle}><img src={icon.src} style={{ width: "35px", height: "35px", padding: "2.5px" }} /></div>}
             </div>
         </div>
     );
