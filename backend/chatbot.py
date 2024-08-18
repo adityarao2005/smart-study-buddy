@@ -1,3 +1,4 @@
+from flask import Flask, request, jsonify
 import requests
 import wolframalpha
 import openai
@@ -5,11 +6,13 @@ import re
 import os
 from dotenv import load_dotenv
 
+
+app = Flask(__name__)
+
 load_dotenv()  # take environment variables from .env.
 
 # Code of your application, which uses environment variables (e.g. from `os.environ` or
 # `os.getenv`) as if they came from the actual environment.
-
 
 
 client = wolframalpha.Client(os.getenv('WOLFRAM_APP_ID'))
@@ -69,12 +72,17 @@ def wolframQuery(userInput):
         # Print the error message returned by the API
         return f"Error: {response.text}"
 
+# Flask route for the chatbot
 
+
+@app.route('/chatbot', methods=['POST'])
 def chatbot():
     while True:
-        prompt = input("You: ")
-        promptNew = prompt.lower()
-        
+        # prompt = input("You: ")
+        # promptNew = prompt.lower()
+        data = request.json
+        prompt = data.get('prompt')
+
         if promptNew == "exit":
             break
 
@@ -82,13 +90,18 @@ def chatbot():
         # entered or the user adds the word "wolfram" to their query
         if "ask wolfram:" in promptNew:
             promptNew = promptNew.replace("ask wolfram:", "").strip()
-            result = wolframQuery(promptNew)
-            print(result)
+            # result = wolframQuery(promptNew)
+            # print(result)
+            response = wolframQuery(promptNew)
 
         else:
-            myResponse = GPTQuery(promptNew)
-            print(f"Bot: {myResponse}")
+            # myResponse = GPTQuery(promptNew)
+            # print(f"Bot: {myResponse}")
+            response = GPTQuery(prompt)
+
+        return jsonify({"response": response})
 
 
 if __name__ == "__main__":
-    chatbot()
+    # chatbot()
+    app.run(debug=True)
