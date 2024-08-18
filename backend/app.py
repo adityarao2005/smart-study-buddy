@@ -11,4 +11,4 @@ def get_chatbot_response():
     prompt = data.get('prompt')
     return jsonify({'response': handle(prompt)})
 
-app.run(port=8080)
+app.run(port=8000)

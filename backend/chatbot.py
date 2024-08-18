@@ -78,7 +78,7 @@ def handle(prompt):
     # entered or the user adds the word "wolfram" to their query
     if "ask wolfram:" in prompt:
         promptNew = prompt.replace("ask wolfram:", "").strip()
-        result = wolframQuery(prompt)
+        result = wolframQuery(promptNew)
         return result
     else:
         myResponse = GPTQuery(prompt)
