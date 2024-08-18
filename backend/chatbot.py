@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+
 import requests
 import wolframalpha
 import openai
@@ -7,7 +7,6 @@ import os
 from dotenv import load_dotenv
 
 
-app = Flask(__name__)
 
 load_dotenv()  # take environment variables from .env.
 
@@ -74,34 +73,28 @@ def wolframQuery(userInput):
 
 # Flask route for the chatbot
 
+def handle(prompt):
+    # Allows the user to override ChatGPT processing and process through Wolfram Alpha if a basic calculation is
+    # entered or the user adds the word "wolfram" to their query
+    if "ask wolfram:" in prompt:
+        promptNew = prompt.replace("ask wolfram:", "").strip()
+        result = wolframQuery(prompt)
+        return result
+    else:
+        myResponse = GPTQuery(prompt)
+        return myResponse
 
-@app.route('/chatbot', methods=['POST'])
 def chatbot():
     while True:
-        # prompt = input("You: ")
-        # promptNew = prompt.lower()
-        data = request.json
-        prompt = data.get('prompt')
+        prompt = input("You: ")
+        promptNew = prompt.lower()
 
         if promptNew == "exit":
             break
 
-        # Allows the user to override ChatGPT processing and process through Wolfram Alpha if a basic calculation is
-        # entered or the user adds the word "wolfram" to their query
-        if "ask wolfram:" in promptNew:
-            promptNew = promptNew.replace("ask wolfram:", "").strip()
-            # result = wolframQuery(promptNew)
-            # print(result)
-            response = wolframQuery(promptNew)
+        print(f"Bot: {handle(promptNew)}")
 
-        else:
-            # myResponse = GPTQuery(promptNew)
-            # print(f"Bot: {myResponse}")
-            response = GPTQuery(prompt)
-
-        return jsonify({"response": response})
 
 
 if __name__ == "__main__":
-    # chatbot()
-    app.run(debug=True)
+    chatbot()
