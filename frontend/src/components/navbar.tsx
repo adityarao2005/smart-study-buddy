@@ -10,7 +10,7 @@ export default function Component() {
 
     return (
         <div className={styles.navbar}>
-            <Link href="/" className={styles.link}><div className={styles.banner}>Name {"&"} Logo</div></Link>
+            <Link href="/" className={styles.link}><div className={styles.banner}>Smart Study Buddy</div></Link>
             <div className={styles.space}></div>
 
             <div>
