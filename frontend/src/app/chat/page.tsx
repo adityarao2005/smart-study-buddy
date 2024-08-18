@@ -5,6 +5,7 @@ import picture from "@/assets/send message button.png";
 import icon from "@/assets/icon.png";
 import { KeyboardEventHandler, useState } from "react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
+import MarkdownWithMath from "@/components/markdown";
 
 const oxygen = Oxygen({ subsets: ["latin"], display: "swap", weight: "400" });
 
@@ -50,7 +51,7 @@ export default function Page() {
         setLoading(false);
     }
 
-    const handleKeyDown = (event: KeyboardEvent) => {
+    const handleKeyDown = (event: any) => {
         if (event.key === 'Enter' && loading == false) {
             sendMessage();
         }
